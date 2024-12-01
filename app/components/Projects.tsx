@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ShoppingCart, LayoutDashboard, CheckSquare, Calendar } from 'lucide-react'
+import { ShoppingCart, LayoutDashboard, Calendar } from 'lucide-react'
 
 const projects = [
   { 

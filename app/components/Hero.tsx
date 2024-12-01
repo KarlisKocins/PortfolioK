@@ -21,7 +21,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl text-white mb-8"
         >
-          I'm a passionate developer creating amazing web experiences
+          I&apos;m a passionate developer creating amazing web experiences
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
