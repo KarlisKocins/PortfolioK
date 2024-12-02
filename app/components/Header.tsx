@@ -10,7 +10,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      className="fixed w-full bg-background shadow-md z-10 dark:bg-gray-800"
+      className="fixed w-full bg-background shadow-md z-50"
     >
       <nav className="max-w-5xl mx-auto px-4 py-2 flex justify-between items-center">
         <motion.div

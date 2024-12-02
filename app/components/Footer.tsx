@@ -22,13 +22,26 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex space-x-4"
           >
-            <a href="#" className="hover:text-primary transition duration-300">
+            <a 
+              href="https://github.com/KarlisKocins" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-primary transition duration-300"
+            >
               <Github size={24} />
             </a>
-            <a href="#" className="hover:text-primary transition duration-300">
+            <a 
+              href="https://www.linkedin.com/in/karlis-kocins-888bb4336/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-primary transition duration-300"
+            >
               <Linkedin size={24} />
             </a>
-            <a href="#" className="hover:text-primary transition duration-300">
+            <a 
+              href="mailto:kocins36@gmail.com" 
+              className="hover:text-primary transition duration-300"
+            >
               <Mail size={24} />
             </a>
           </motion.div>

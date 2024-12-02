@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/PortfolioK', // Replace with your repository name
+  basePath: process.env.NODE_ENV === 'production' ? '/PortfolioK' : '',
 };
 
 export default nextConfig;

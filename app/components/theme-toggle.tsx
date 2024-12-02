@@ -9,6 +9,16 @@ import { Button } from "./ui/button"
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  // Prevent hydration mismatch by only rendering after mount
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return <Button variant="ghost" size="icon" />
+  }
 
   return (
     <Button
@@ -18,7 +28,7 @@ export function ThemeToggle() {
     >
       <div className="relative w-[1.2rem] h-[1.2rem]">
         <motion.div
-          initial={false}
+          initial={{ scale: theme === "light" ? 1 : 0 }}
           animate={{
             scale: theme === "light" ? 1 : 0,
             rotate: theme === "light" ? 0 : 180,
@@ -29,7 +39,7 @@ export function ThemeToggle() {
         </motion.div>
         <motion.div
           className="absolute top-0 left-0"
-          initial={false}
+          initial={{ scale: theme === "dark" ? 1 : 0 }}
           animate={{
             scale: theme === "dark" ? 1 : 0,
             rotate: theme === "dark" ? 0 : -180,
