@@ -9,19 +9,44 @@ const projects = [
     id: 1, 
     title: 'AutoWeb', 
     icon: Calendar,
-    description: 'An auto repair shop appointment system with scheduling, service tracking, and customer management.'
+    description: 'Auto repair shop management system featuring appointment scheduling, admin dashboard, and service management.',
+    repoUrl: 'https://github.com/QQumber/Programmaturas-izstr',
+    techStack: ['Next.js', 'React', 'PostgreSQL', 'CSS Modules'],
+    features: [
+      'Calendar-based scheduling',
+      'Admin dashboard',
+      'Service management',
+      'User authentication',
+      'Responsive design'
+    ]
   },
   { 
     id: 2, 
     title: 'E-commerce Platform', 
     icon: ShoppingCart,
-    description: 'A full-featured e-commerce platform with cart, checkout, and payment integration.'
+    description: 'A full-featured e-commerce platform with cart, checkout, and payment integration.',
+    techStack: ['Next.js', 'Prisma', 'Stripe', 'TailwindCSS', 'TypeScript'],
+    features: [
+      'Shopping cart functionality',
+      'Secure payment processing',
+      'Product management',
+      'Order tracking',
+      'User accounts'
+    ]
   },
   { 
     id: 3, 
     title: 'Social Media Dashboard', 
     icon: LayoutDashboard,
-    description: 'Analytics dashboard for social media metrics and engagement tracking.'
+    description: 'Analytics dashboard for social media metrics and engagement tracking.',
+    techStack: ['React', 'Redux', 'Chart.js', 'Material-UI', 'Firebase'],
+    features: [
+      'Real-time analytics',
+      'Data visualization',
+      'Multi-platform integration',
+      'Custom reporting',
+      'Performance metrics'
+    ]
   },
 ]
 
@@ -72,10 +97,36 @@ const Projects = () => {
                       {project.description}
                     </CardItem>
                     
-                    <CardItem translateZ="100" className="w-full mt-4">
-                      <button className="rounded-xl w-full bg-black dark:bg-white dark:text-black text-white text-sm px-4 py-2">
+                    <CardItem
+                      translateZ="60"
+                      className="mt-4"
+                    >
+                      <ul className="text-sm space-y-2 text-muted-foreground">
+                        {project.features?.map((feature, index) => (
+                          <li key={index} className="flex items-center">
+                            <span className="mr-2">•</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardItem>
+                    
+                    <CardItem translateZ="100" className="w-full mt-4 space-y-4">
+                      <div className="text-xs text-muted-foreground flex flex-wrap gap-2 justify-center">
+                        {project.techStack?.map((tech, index) => (
+                          <span key={index} className="bg-muted px-2 py-1 rounded-md">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <a 
+                        href={project.repoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="rounded-xl block w-full bg-black dark:bg-white dark:text-black text-white text-sm px-4 py-2 text-center hover:opacity-90 transition-opacity"
+                      >
                         Learn More →
-                      </button>
+                      </a>
                     </CardItem>
                   </CardBody>
                 </CardContainer>
