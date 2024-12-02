@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { BackgroundLines } from './ui/background-lines'
+import { Spotlight } from './ui/Spotlight'
 
 const Hero = () => {
   return (
     <BackgroundLines className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
+      <Spotlight className="top-[-20%] left-0 md:left-60 md:-top-20" />
       {/* Content */}
       <div className="text-center relative z-10 px-4">
         <motion.h1
