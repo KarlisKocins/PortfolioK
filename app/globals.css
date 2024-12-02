@@ -34,6 +34,8 @@
     --ring: 215 20.2% 65.1%;
  
     --radius: 0.5rem;
+    --transition-duration: 0.15s;
+    --transition-timing: ease-out;
   }
  
   .dark {
@@ -71,9 +73,22 @@
 @layer base {
   * {
     @apply border-border;
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                border-color var(--transition-duration) var(--transition-timing),
+                color var(--transition-duration) var(--transition-timing),
+                fill var(--transition-duration) var(--transition-timing),
+                stroke var(--transition-duration) var(--transition-timing),
+                opacity var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing);
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Add transition for all color properties except during theme transition */
+*:not(.theme-transition-active *) {
+  transition: background-color var(--transition-duration) var(--transition-timing),
+              color var(--transition-duration) var(--transition-timing);
 }
 
