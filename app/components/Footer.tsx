@@ -14,7 +14,7 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             className="mb-4 md:mb-0"
           >
-            <p className="text-lg font-semibold">&copy; 2023 My Portfolio. All rights reserved.</p>
+            <p className="text-lg font-semibold">Code with passion, build with purpose.</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}

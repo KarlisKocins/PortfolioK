@@ -22,30 +22,30 @@ const projects = [
   },
   { 
     id: 2, 
-    title: 'E-commerce Platform', 
+    title: 'GymFlow', 
     icon: ShoppingCart,
-    description: 'A full-featured e-commerce platform with cart, checkout, and payment integration.',
-    techStack: ['Next.js', 'Prisma', 'Stripe', 'TailwindCSS', 'TypeScript'],
+    description: 'Workout tracking website allowing users to plan and track their fitness progress (still in production and private).',
+    techStack: ['Next.js', 'Prisma', 'TailwindCSS', 'TypeScript'],
     features: [
-      'Shopping cart functionality',
-      'Secure payment processing',
-      'Product management',
-      'Order tracking',
+      'Workout tracking',
+      'Progress visualization',
+      'Exercise library',
+      'Personalized routines',
       'User accounts'
     ]
   },
   { 
     id: 3, 
-    title: 'Social Media Dashboard', 
+    title: 'Merger Helper', 
     icon: LayoutDashboard,
-    description: 'Analytics dashboard for social media metrics and engagement tracking.',
-    techStack: ['React', 'Redux', 'Chart.js', 'Material-UI', 'Firebase'],
+    description: 'Bachelor work focused on creating a scientifically proven tool to help small organizations merge using Python and Excel (in progress).',
+    techStack: ['Python', 'Excel'],
     features: [
-      'Real-time analytics',
-      'Data visualization',
-      'Multi-platform integration',
-      'Custom reporting',
-      'Performance metrics'
+      'Organization mapping',
+      'Process visualization',
+      'Resource integration',
+      'Merger planning',
+      'Data-driven decision making'
     ]
   },
 ]
@@ -77,7 +77,7 @@ const Projects = () => {
                   <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-black/[0.1] dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] dark:bg-background w-[380px] h-auto rounded-xl p-6">
                     <CardItem
                       translateZ="50"
-                      className="text-xl font-bold text-neutral-600 dark:text-white w-full"
+                      className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
                     >
                       <div className="flex flex-col items-center text-center gap-4">
                         <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full">
@@ -119,14 +119,24 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
-                      <a 
-                        href={project.repoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="rounded-xl block w-full bg-black dark:bg-white dark:text-black text-white text-sm px-4 py-2 text-center hover:opacity-90 transition-opacity"
-                      >
-                        Learn More →
-                      </a>
+                      {project.repoUrl ? (
+                        <a 
+                          href={project.repoUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="rounded-xl block w-full bg-black hover:bg-green-600 dark:bg-white dark:hover:bg-green-600 dark:text-black dark:hover:text-white text-white text-sm px-4 py-2 text-center relative overflow-hidden transition-colors duration-300"
+                        >
+                          <span className="relative">Learn More →</span>
+                        </a>
+                      ) : (
+                        <div className={`rounded-xl block w-full bg-black dark:bg-white dark:text-black text-white text-sm px-4 py-2 text-center relative transition-colors duration-300 ${
+                          project.title === 'GymFlow' 
+                            ? 'hover:bg-red-600 dark:hover:bg-red-600' 
+                            : 'hover:bg-orange-500 dark:hover:bg-orange-500'
+                        } dark:hover:text-white`}>
+                          <span className="relative">{project.title === 'GymFlow' ? 'Private' : 'In Progress'}</span>
+                        </div>
+                      )}
                     </CardItem>
                   </CardBody>
                 </CardContainer>
