@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Home, Lightbulb, ToggleLeft, Server } from 'lucide-react'
 import { CardContainer, CardBody, CardItem } from './ui/3d-card'
+import { useInView } from 'react-intersection-observer'
+import AnimatedCable from './ui/AnimatedCable'
 
 const homeProjects = [
   {
@@ -56,9 +58,12 @@ const homeProjects = [
 ]
 
 const HomeProjects = () => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 })
   return (
-    <section id="home-projects" className="py-20 bg-muted">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="home-projects" className="py-20 bg-muted relative overflow-hidden" ref={ref}>
+      {/* Animated Cable - only show when in view, animates every time */}
+      {inView && <AnimatedCable className="z-0" key={Date.now()} />}
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}

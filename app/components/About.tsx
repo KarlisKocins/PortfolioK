@@ -60,8 +60,8 @@ const About = () => {
               </div>
               <ul className="list-disc pl-4 space-y-2 text-muted-foreground">
                 <li>Full-stack developer</li>
-                <li>Passionate about modern web development</li>
-                <li>Problem solver & creative thinker</li>
+                <li>Smart home & automation enthusiast</li>
+                <li>Networking and custom automation experience</li>
               </ul>
             </motion.div>
 
@@ -77,9 +77,9 @@ const About = () => {
                 <h3 className="text-xl font-semibold">Education</h3>
               </div>
               <ul className="list-disc pl-4 space-y-2 text-muted-foreground">
-                <li>Computer Science</li>
+                <li>Bachelor's degree in Datorsistēmas</li>
                 <li>Riga Technical University</li>
-                <li>Final Term</li>
+                <li>Graduated</li>
               </ul>
             </motion.div>
 

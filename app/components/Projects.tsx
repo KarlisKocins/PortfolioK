@@ -3,14 +3,16 @@
 import { motion } from 'framer-motion'
 import { ShoppingCart, LayoutDashboard, Calendar } from 'lucide-react'
 import { CardContainer, CardBody, CardItem } from './ui/3d-card'
+import AnimatedCable from './ui/AnimatedCable'
+import { useInView } from 'react-intersection-observer'
 
 const projects = [
   { 
     id: 1, 
     title: 'AutoWeb', 
     icon: Calendar,
-    description: 'Auto repair shop management system featuring appointment scheduling, admin dashboard, and service management.',
-    repoUrl: 'https://github.com/QQumber/Programmaturas-izstr',
+    description: 'A modern auto repair shop management system with an informative homepage, booking system, and admin dashboard. Features calendar scheduling, user authentication, service management, and responsive design to streamline workshop operations and enhance customer experience.',
+    repoUrl: 'https://github.com/KarlisKocins/AutoWeb',
     techStack: ['Next.js', 'React', 'PostgreSQL', 'CSS Modules'],
     features: [
       'Calendar-based scheduling',
@@ -24,36 +26,43 @@ const projects = [
     id: 2, 
     title: 'GymFlow', 
     icon: ShoppingCart,
-    description: 'Workout tracking website allowing users to plan and track their fitness progress (still in production and private).',
+    description: 'A modern workout tracking web app that lets users create, log, and analyze custom workouts and routines. Features a comprehensive exercise library, pre-made routines, progress analytics, and visualizations to help users track their fitness journey and achieve their goals.',
     techStack: ['Next.js', 'Prisma', 'TailwindCSS', 'TypeScript'],
+    repoUrl: 'https://github.com/KarlisKocins/GymFlow',
     features: [
       'Workout tracking',
       'Progress visualization',
       'Exercise library',
       'Personalized routines',
       'User accounts'
-    ]
+    ],
   },
   { 
     id: 3, 
     title: 'Merger Helper', 
     icon: LayoutDashboard,
-    description: 'Bachelor work focused on creating a scientifically proven tool to help small organizations merge using Python and Excel (in progress).',
+    description: 'Decision support tool for evaluating and selecting optimal system integration strategies using multi-criteria analysis.',
     techStack: ['Python', 'Excel'],
+    repoUrl: 'https://github.com/KarlisKocins/Integracijas-Lemumu-Pienemsanas-Riks',
     features: [
-      'Organization mapping',
-      'Process visualization',
-      'Resource integration',
-      'Merger planning',
-      'Data-driven decision making'
-    ]
+      'Customizable evaluation criteria and weights',
+      'Multiple integration strategy options',
+      'Quantitative and qualitative scoring',
+      'Automatic normalization and result calculation',
+      'Visual analysis with radar and weight diagrams',
+      'Detailed comparison tables and reports',
+      'Web and desktop interfaces'
+    ],
   },
 ]
 
 const Projects = () => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 })
   return (
-    <section id="projects" className="py-20 bg-muted">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="projects" className="py-20 bg-muted relative overflow-hidden" ref={ref}>
+      {/* Animated Cable - different color, animates every time in view */}
+      {inView && <AnimatedCable color="#a21caf" className="z-0" key={Date.now()} />}
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +83,7 @@ const Projects = () => {
                 className="flex justify-center"
               >
                 <CardContainer containerClassName="py-0">
-                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-black/[0.1] dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] dark:bg-background w-[380px] h-auto rounded-xl p-6">
+                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-black/[0.1] dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] dark:bg-background w-[380px] min-h-[600px] h-auto rounded-xl p-6 flex flex-col justify-between">
                     <CardItem
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
