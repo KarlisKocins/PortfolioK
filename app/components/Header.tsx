@@ -47,6 +47,14 @@ const Header = () => {
                 </motion.li>
               ))}
               <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link
+                  href="#home-projects"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
+                  Home Automation
+                </Link>
+              </motion.li>
+              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <button
                   onClick={() => setIsContactOpen(true)}
                   className="text-sm text-muted-foreground hover:text-foreground"
@@ -115,6 +123,15 @@ const Header = () => {
                       </Link>
                     </motion.li>
                   ))}
+                  <motion.li whileTap={{ scale: 0.95 }}>
+                    <Link
+                      href="#home-projects"
+                      className="block text-sm text-muted-foreground hover:text-foreground py-2"
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      Home Automation
+                    </Link>
+                  </motion.li>
                   <motion.li whileTap={{ scale: 0.95 }}>
                     <button
                       onClick={() => {

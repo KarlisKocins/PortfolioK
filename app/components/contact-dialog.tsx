@@ -43,7 +43,7 @@ export const ContactDialog = ({ isOpen, onClose }: ContactDialogProps) => {
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>+371 12345678</span>
+                  <span>+371 27090500</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail className="h-5 w-5 text-primary" />
