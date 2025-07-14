@@ -75,6 +75,25 @@ const HomeProjects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {homeProjects.map((project) => {
             const Icon = project.icon
+            // Assign a unique hover color and background for each project
+            let hoverColor = '';
+            let hoverBg = '';
+            if (project.icon === Home) {
+              hoverColor = 'group-hover/card:text-sky-500';
+              hoverBg = 'group-hover/card:bg-sky-100 dark:group-hover/card:bg-sky-900';
+            }
+            if (project.icon === Lightbulb) {
+              hoverColor = 'group-hover/card:text-yellow-400';
+              hoverBg = 'group-hover/card:bg-yellow-100 dark:group-hover/card:bg-yellow-900';
+            }
+            if (project.icon === ToggleLeft) {
+              hoverColor = 'group-hover/card:text-pink-500';
+              hoverBg = 'group-hover/card:bg-pink-100 dark:group-hover/card:bg-pink-900';
+            }
+            if (project.icon === Server) {
+              hoverColor = 'group-hover/card:text-purple-500';
+              hoverBg = 'group-hover/card:bg-purple-100 dark:group-hover/card:bg-purple-900';
+            }
             return (
               <motion.div
                 key={project.id}
@@ -90,8 +109,8 @@ const HomeProjects = () => {
                       className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
                     >
                       <div className="flex flex-col items-center text-center gap-4">
-                        <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full">
-                          <Icon className="w-8 h-8 text-primary" />
+                        <div className={`w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full transition-colors duration-300 ${hoverBg}`}>
+                          <Icon className={`w-8 h-8 text-primary transition-colors duration-300 ${hoverColor}`} />
                         </div>
                         <h3 className="text-xl font-semibold text-card-foreground">
                           {project.title}

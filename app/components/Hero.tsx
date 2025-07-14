@@ -9,11 +9,11 @@ const Hero = () => {
   return (
     <BackgroundLines className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
       {/* Hero corner overlays */}
-      <div className="pointer-events-none select-none">
-        <span className="absolute top-20 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart">Kārlis Kociņš</span>
-        <span className="absolute top-20 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart">Latvia</span>
-        <span className="absolute bottom-4 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart">kocins36@gmail.com</span>
-        <span className="absolute bottom-4 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart">Portfolio 2025</span>
+      <div>
+        <span className="absolute top-20 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Kārlis Kociņš</span>
+        <span className="absolute top-20 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Latvia</span>
+        <span className="absolute bottom-4 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">kocins36@gmail.com</span>
+        <span className="absolute bottom-4 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Portfolio 2025</span>
       </div>
       <Spotlight className="top-[-20%] left-0 md:left-60 md:-top-20" />
       {/* Content */}
