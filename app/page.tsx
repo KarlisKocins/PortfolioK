@@ -2,6 +2,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
+import HomeProjects from './components/HomeProjects'
 import Footer from './components/Footer'
 
 export default function Home() {
@@ -12,9 +13,9 @@ export default function Home() {
         <Hero />
         <About />
         <Projects />
+        <HomeProjects />
         <Footer />
       </main>
     </div>
   )
 }
-
