@@ -77,7 +77,7 @@ const About = () => {
                 <h3 className="text-xl font-semibold">Education</h3>
               </div>
               <ul className="list-disc pl-4 space-y-2 text-muted-foreground">
-                <li>Bachelor's degree in Datorsistēmas</li>
+                <li>Bachelor&apos;s degree in Datorsistēmas</li>
                 <li>Riga Technical University</li>
                 <li>Graduated</li>
               </ul>
