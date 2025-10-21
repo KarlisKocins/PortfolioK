@@ -18,7 +18,7 @@ const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="fixed w-full bg-background shadow-md z-50"
+        className="fixed w-full bg-background shadow-md z-50 border-b border-primary/20"
       >
         <nav className="max-w-5xl mx-auto px-4 py-2 flex justify-between items-center">
           <motion.div
@@ -27,39 +27,35 @@ const Header = () => {
           >
             <Link 
               href="/" 
-              className="text-sm font-bold text-foreground font-pressStart tracking-normal"
+              className="text-sm font-bold text-primary font-terminal tracking-normal hover:animate-glitch"
             >
-              Karlis Portfolio
+              root@portfolio:~$
             </Link>
           </motion.div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6">
-              {['About', 'Projects'].map((item) => (
-                <motion.li key={item} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              {[
+                { name: 'About', command: './about.sh' },
+                { name: 'Projects', command: './projects.sh' },
+                { name: 'Home Automation', command: './homelab.sh' }
+              ].map((item) => (
+                <motion.li key={item.name} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Link 
-                    href={`#${item.toLowerCase()}`} 
-                    className="text-sm text-muted-foreground hover:text-foreground"
+                    href={`#${item.name.toLowerCase().replace(' ', '-')}`} 
+                    className="text-sm text-muted-foreground hover:text-primary font-terminal transition-colors duration-300"
                   >
-                    {item}
+                    {item.command}
                   </Link>
                 </motion.li>
               ))}
               <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Link
-                  href="#home-projects"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  Home Automation
-                </Link>
-              </motion.li>
-              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="text-sm text-muted-foreground hover:text-foreground"
+                  className="text-sm text-muted-foreground hover:text-primary font-terminal transition-colors duration-300"
                 >
-                  Contact
+                  ./contact.sh
                 </button>
               </motion.li>
             </ul>
@@ -73,6 +69,7 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsDrawerOpen(true)}
+              className="text-primary hover:bg-primary/10"
             >
               <Menu className="h-5 w-5" />
             </Button>
@@ -96,7 +93,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="fixed right-0 top-0 h-full w-[250px] bg-background shadow-lg z-50 md:hidden"
+              className="fixed right-0 top-0 h-full w-[250px] bg-background shadow-lg z-50 md:hidden border-l border-primary/20"
             >
               <div className="p-4">
                 <div className="flex justify-end mb-4">
@@ -104,43 +101,42 @@ const Header = () => {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsDrawerOpen(false)}
+                    className="text-primary hover:bg-primary/10"
                   >
                     <X className="h-5 w-5" />
                   </Button>
                 </div>
+                <div className="mb-4 pb-4 border-b border-primary/20">
+                  <p className="text-xs text-muted-foreground font-terminal">[TERMINAL_MENU]</p>
+                </div>
                 <ul className="space-y-4">
-                  {['About', 'Projects'].map((item) => (
+                  {[
+                    { name: 'About', command: './about.sh' },
+                    { name: 'Projects', command: './projects.sh' },
+                    { name: 'Home Automation', command: './homelab.sh' }
+                  ].map((item) => (
                     <motion.li 
-                      key={item}
+                      key={item.name}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Link 
-                        href={`#${item.toLowerCase()}`}
-                        className="block text-sm text-muted-foreground hover:text-foreground py-2"
+                        href={`#${item.name.toLowerCase().replace(' ', '-')}`}
+                        className="block text-sm text-muted-foreground hover:text-primary py-2 font-terminal transition-colors duration-300"
                         onClick={() => setIsDrawerOpen(false)}
                       >
-                        {item}
+                        {item.command}
                       </Link>
                     </motion.li>
                   ))}
-                  <motion.li whileTap={{ scale: 0.95 }}>
-                    <Link
-                      href="#home-projects"
-                      className="block text-sm text-muted-foreground hover:text-foreground py-2"
-                      onClick={() => setIsDrawerOpen(false)}
-                    >
-                      Home Automation
-                    </Link>
-                  </motion.li>
                   <motion.li whileTap={{ scale: 0.95 }}>
                     <button
                       onClick={() => {
                         setIsDrawerOpen(false)
                         setIsContactOpen(true)
                       }}
-                      className="block w-full text-left text-sm text-muted-foreground hover:text-foreground py-2"
+                      className="block w-full text-left text-sm text-muted-foreground hover:text-primary py-2 font-terminal transition-colors duration-300"
                     >
-                      Contact
+                      ./contact.sh
                     </button>
                   </motion.li>
                 </ul>

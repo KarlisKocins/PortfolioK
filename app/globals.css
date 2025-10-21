@@ -4,69 +4,69 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --ring: 215 20.2% 65.1%;
- 
+    --background: 0 0% 2%;
+    --foreground: 120 100% 50%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 120 50% 40%;
+
+    --popover: 0 0% 2%;
+    --popover-foreground: 120 100% 50%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 120 100% 50%;
+
+    --border: 120 30% 20%;
+    --input: 120 30% 20%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 120 100% 50%;
+
+    --accent: 0 0% 8%;
+    --accent-foreground: 120 100% 50%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 2%;
+
+    --ring: 120 100% 50%;
+
     --radius: 0.5rem;
     --transition-duration: 0.15s;
     --transition-timing: ease-out;
   }
- 
+
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
- 
-    --ring: 217.2 32.6% 17.5%;
+    --background: 0 0% 2%;
+    --foreground: 120 100% 50%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 120 50% 40%;
+
+    --popover: 0 0% 2%;
+    --popover-foreground: 120 100% 50%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 120 100% 50%;
+
+    --border: 120 30% 20%;
+    --input: 120 30% 20%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 120 100% 50%;
+
+    --accent: 0 0% 8%;
+    --accent-foreground: 120 100% 50%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 2%;
+
+    --ring: 120 100% 50%;
   }
 }
  
@@ -90,5 +90,186 @@
 *:not(.theme-transition-active *) {
   transition: background-color var(--transition-duration) var(--transition-timing),
               color var(--transition-duration) var(--transition-timing);
+}
+
+/* Cybersecurity Theme Effects */
+@layer utilities {
+  /* Terminal cursor blink */
+  .terminal-cursor::after {
+    content: '_';
+    animation: blink 1s infinite;
+    color: hsl(var(--primary));
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Glitch effect */
+  .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff0000;
+    z-index: -1;
+  }
+
+  .glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00ff00;
+    z-index: -2;
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+
+  @keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(-2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+  }
+
+  @keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, -2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(-2px, 2px); }
+  }
+
+  /* Scanlines effect */
+  .scanlines {
+    position: relative;
+  }
+
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Terminal text typing effect */
+  .typing {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  /* Matrix rain effect */
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+
+  /* Terminal prompt styling */
+  .terminal-prompt::before {
+    content: '$ ';
+    color: hsl(var(--primary));
+    font-weight: bold;
+  }
+
+  .terminal-prompt-root::before {
+    content: 'root@portfolio:~$ ';
+    color: hsl(var(--primary));
+    font-weight: bold;
+  }
+
+  /* ASCII art brackets */
+  .ascii-bracket::before {
+    content: '[';
+    color: hsl(var(--primary));
+  }
+
+  .ascii-bracket::after {
+    content: ']';
+    color: hsl(var(--primary));
+  }
+
+  /* Security status indicators */
+  .access-granted {
+    color: #00ff41;
+  }
+
+  .access-denied {
+    color: #ff0000;
+  }
+
+  .compiling {
+    color: #ff9500;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
 }
 

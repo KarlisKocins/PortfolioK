@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Home, Lightbulb, ToggleLeft, Server } from 'lucide-react'
+import { Shield, Lock, Terminal, Network } from 'lucide-react'
 import { CardContainer, CardBody, CardItem } from './ui/3d-card'
 import { useInView } from 'react-intersection-observer'
 import AnimatedCable from './ui/AnimatedCable'
@@ -9,8 +9,8 @@ import AnimatedCable from './ui/AnimatedCable'
 const homeProjects = [
   {
     id: 1,
-    title: 'Home Automation with Home Assistant',
-    icon: Home,
+    title: 'Lab Home Assistant',
+    icon: Shield,
     description: 'Installed and configured Home Assistant to control and automate various smart devices throughout my home.',
     details: [
       'Integrated smart switches, lights, and sensors',
@@ -21,8 +21,8 @@ const homeProjects = [
   },
   {
     id: 2,
-    title: 'Smart Devices & Practical Work',
-    icon: Lightbulb,
+    title: 'Smart Practical Work',
+    icon: Lock,
     description: 'Hands-on experience with a variety of smart appliances, switches, lights, and sensors.',
     details: [
       'Configured Zigbee and Wi-Fi devices',
@@ -34,7 +34,7 @@ const homeProjects = [
   {
     id: 3,
     title: 'Custom Automations',
-    icon: ToggleLeft,
+    icon: Terminal,
     description: 'Developed custom automations to simplify everyday tasks and improve comfort.',
     details: [
       'Automated morning and night routines',
@@ -46,7 +46,7 @@ const homeProjects = [
   {
     id: 4,
     title: 'Home Networking & VLANs',
-    icon: Server,
+    icon: Network,
     description: 'Installed and configured two managed switches with VLAN trunking to optimize home network performance.',
     details: [
       'Set up VLAN trunking to pass both internet and IPTV through a single cable to another room',
@@ -68,9 +68,9 @@ const HomeProjects = () => {
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-center mb-12 text-foreground"
+          className="text-3xl font-bold text-center mb-12 text-primary font-terminal"
         >
-          Home Automation & Networking Projects
+          # ./homelab.sh --list // NETWORK_INFRASTRUCTURE
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {homeProjects.map((project) => {
@@ -78,21 +78,21 @@ const HomeProjects = () => {
             // Assign a unique hover color and background for each project
             let hoverColor = '';
             let hoverBg = '';
-            if (project.icon === Home) {
-              hoverColor = 'group-hover/card:text-sky-500';
-              hoverBg = 'group-hover/card:bg-sky-100 dark:group-hover/card:bg-sky-900';
+            if (project.icon === Shield) {
+              hoverColor = 'group-hover/card:text-primary';
+              hoverBg = 'group-hover/card:bg-primary/10';
             }
-            if (project.icon === Lightbulb) {
-              hoverColor = 'group-hover/card:text-yellow-400';
-              hoverBg = 'group-hover/card:bg-yellow-100 dark:group-hover/card:bg-yellow-900';
+            if (project.icon === Lock) {
+              hoverColor = 'group-hover/card:text-primary';
+              hoverBg = 'group-hover/card:bg-primary/10';
             }
-            if (project.icon === ToggleLeft) {
-              hoverColor = 'group-hover/card:text-pink-500';
-              hoverBg = 'group-hover/card:bg-pink-100 dark:group-hover/card:bg-pink-900';
+            if (project.icon === Terminal) {
+              hoverColor = 'group-hover/card:text-primary';
+              hoverBg = 'group-hover/card:bg-primary/10';
             }
-            if (project.icon === Server) {
-              hoverColor = 'group-hover/card:text-purple-500';
-              hoverBg = 'group-hover/card:bg-purple-100 dark:group-hover/card:bg-purple-900';
+            if (project.icon === Network) {
+              hoverColor = 'group-hover/card:text-primary';
+              hoverBg = 'group-hover/card:bg-primary/10';
             }
             return (
               <motion.div
@@ -103,24 +103,24 @@ const HomeProjects = () => {
                 className="flex justify-center"
               >
                 <CardContainer containerClassName="py-0">
-                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-black/[0.1] dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] dark:bg-background w-[380px] h-auto rounded-xl p-6">
+                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-background w-[380px] h-auto rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-colors">
                     <CardItem
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
                     >
                       <div className="flex flex-col items-center text-center gap-4">
-                        <div className={`w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full transition-colors duration-300 ${hoverBg}`}>
+                        <div className={`w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full transition-colors duration-300 border border-primary/20 ${hoverBg}`}>
                           <Icon className={`w-8 h-8 text-primary transition-colors duration-300 ${hoverColor}`} />
                         </div>
-                        <h3 className="text-xl font-semibold text-card-foreground">
-                          {project.title}
+                        <h3 className="text-xl font-semibold text-card-foreground font-terminal">
+                          [{project.title.split(' ')[0].toUpperCase()}]::{project.title.split(' ').slice(1).join('_').toUpperCase()}
                         </h3>
                       </div>
                     </CardItem>
                     <CardItem
                       as="p"
                       translateZ="60"
-                      className="text-neutral-500 text-sm mt-2 dark:text-neutral-300"
+                      className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 font-terminal"
                     >
                       {project.description}
                     </CardItem>
@@ -128,10 +128,10 @@ const HomeProjects = () => {
                       translateZ="60"
                       className="mt-4"
                     >
-                      <ul className="text-sm space-y-2 text-muted-foreground">
+                      <ul className="text-sm space-y-2 text-muted-foreground font-terminal">
                         {project.details.map((detail, index) => (
                           <li key={index} className="flex items-center">
-                            <span className="mr-2">•</span>
+                            <span className="mr-2 text-primary">&gt;&gt;</span>
                             {detail}
                           </li>
                         ))}

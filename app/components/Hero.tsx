@@ -4,36 +4,56 @@ import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { BackgroundLines } from './ui/background-lines'
 import { Spotlight } from './ui/Spotlight'
+import GlitchText from './ui/glitch-text'
+import Scanlines from './ui/scanlines'
 
 const Hero = () => {
   return (
     <BackgroundLines className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
+      <Scanlines intensity="low" />
+      
       {/* Hero corner overlays */}
       <div>
-        <span className="absolute top-20 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Kārlis Kociņš</span>
-        <span className="absolute top-20 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Latvia</span>
-        <span className="absolute bottom-4 left-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">kocins36@gmail.com</span>
-        <span className="absolute bottom-4 right-4 text-xs md:text-sm text-muted-foreground z-20 font-pressStart transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]">Portfolio 2025</span>
+        <span className="absolute top-20 left-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
+          [USER]::kocins.karlis
+        </span>
+        <span className="absolute top-20 right-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
+          [LOCATION]::LV-RIX
+        </span>
+        <span className="absolute bottom-4 left-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
+          [CONTACT]::kocins36@gmail.com
+        </span>
+        <span className="absolute bottom-4 right-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
+          [BUILD]::v2025.10
+        </span>
       </div>
       <Spotlight className="top-[-20%] left-0 md:left-60 md:-top-20" />
+      
       {/* Content */}
       <div className="text-center relative z-10 px-4">
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-[clamp(2rem,5vw,5rem)] font-bold text-foreground mb-4 leading-tight"
+          className="mb-4"
         >
-          Welcome to My Portfolio
-        </motion.h1>
+          <GlitchText 
+            className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-2 font-terminal"
+            delay={500}
+          >
+            # SYSTEM.INIT // ACCESS_GRANTED
+          </GlitchText>
+        </motion.div>
+        
         <motion.p
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[clamp(1rem,2vw,1.5rem)] text-foreground mb-8"
+          className="text-[clamp(1rem,2vw,1.5rem)] text-foreground mb-8 font-terminal"
         >
-          I&apos;m a passionate developer creating amazing web experiences
+          root@karlis-portfolio:~$ Penetration Testing | Full-Stack Development | Network Security
         </motion.p>
+        
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -41,12 +61,13 @@ const Hero = () => {
         >
           <a
             href="#about"
-            className="bg-primary text-primary-foreground px-[clamp(1rem,3vw,1.5rem)] py-[clamp(0.5rem,1.5vw,0.75rem)] rounded-full font-semibold hover:opacity-90 transition duration-300 text-[clamp(0.875rem,1.5vw,1rem)]"
+            className="bg-primary text-primary-foreground px-[clamp(1rem,3vw,1.5rem)] py-[clamp(0.5rem,1.5vw,0.75rem)] rounded-full font-semibold hover:opacity-90 transition duration-300 text-[clamp(0.875rem,1.5vw,1rem)] font-terminal terminal-prompt-root hover:animate-glitch"
           >
-            Learn More
+            $ ./initialize_profile.sh
           </a>
         </motion.div>
       </div>
+      
       <motion.div
         className="absolute bottom-10"
         animate={{
@@ -58,7 +79,7 @@ const Hero = () => {
           repeatType: 'reverse',
         }}
       >
-        <ArrowDown className="text-foreground w-[clamp(1.5rem,4vw,2rem)] h-[clamp(1.5rem,4vw,2rem)]" />
+        <ArrowDown className="text-primary w-[clamp(1.5rem,4vw,2rem)] h-[clamp(1.5rem,4vw,2rem)]" />
       </motion.div>
     </BackgroundLines>
   )
