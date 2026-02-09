@@ -24,7 +24,7 @@ export const ContactDialog = ({ isOpen, onClose }: ContactDialogProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed right-4 bottom-4 z-50 grid w-full max-w-lg gap-4 border border-primary/20 bg-background p-6 shadow-lg duration-200 sm:rounded-lg"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 grid w-full max-w-lg gap-4 border border-primary/20 bg-background p-6 shadow-lg duration-200 sm:rounded-lg"
           >
             <div className="flex flex-col space-y-1.5 text-center sm:text-left">
               <div className="flex items-center justify-between">

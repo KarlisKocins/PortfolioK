@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ThemeToggle } from './theme-toggle'
+
 import { ContactDialog } from './contact-dialog'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/button'
@@ -59,17 +59,16 @@ const Header = () => {
                 </button>
               </motion.li>
             </ul>
-            <ThemeToggle />
           </div>
 
           {/* Mobile Navigation Button */}
           <div className="flex items-center space-x-2 md:hidden">
-            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsDrawerOpen(true)}
               className="text-primary hover:bg-primary/10"
+              aria-label="Open navigation menu"
             >
               <Menu className="h-5 w-5" />
             </Button>

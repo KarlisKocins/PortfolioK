@@ -60,7 +60,7 @@ const homeProjects = [
 const HomeProjects = () => {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 })
   return (
-    <section id="home-projects" className="py-20 bg-muted relative overflow-hidden" ref={ref}>
+    <section id="home-projects" className="py-20 bg-background relative overflow-hidden" ref={ref}>
       {/* Animated Cable - only show when in view, animates every time */}
       {inView && <AnimatedCable className="z-0" key={Date.now()} />}
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -75,25 +75,6 @@ const HomeProjects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {homeProjects.map((project) => {
             const Icon = project.icon
-            // Assign a unique hover color and background for each project
-            let hoverColor = '';
-            let hoverBg = '';
-            if (project.icon === Shield) {
-              hoverColor = 'group-hover/card:text-primary';
-              hoverBg = 'group-hover/card:bg-primary/10';
-            }
-            if (project.icon === Lock) {
-              hoverColor = 'group-hover/card:text-primary';
-              hoverBg = 'group-hover/card:bg-primary/10';
-            }
-            if (project.icon === Terminal) {
-              hoverColor = 'group-hover/card:text-primary';
-              hoverBg = 'group-hover/card:bg-primary/10';
-            }
-            if (project.icon === Network) {
-              hoverColor = 'group-hover/card:text-primary';
-              hoverBg = 'group-hover/card:bg-primary/10';
-            }
             return (
               <motion.div
                 key={project.id}
@@ -103,14 +84,14 @@ const HomeProjects = () => {
                 className="flex justify-center"
               >
                 <CardContainer containerClassName="py-0">
-                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-background w-[380px] h-auto rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-background w-full max-w-[380px] h-auto rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-colors">
                     <CardItem
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
                     >
                       <div className="flex flex-col items-center text-center gap-4">
-                        <div className={`w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full transition-colors duration-300 border border-primary/20 ${hoverBg}`}>
-                          <Icon className={`w-8 h-8 text-primary transition-colors duration-300 ${hoverColor}`} />
+                        <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full transition-colors duration-300 border border-primary/20 group-hover/card:bg-primary/10">
+                          <Icon className="w-8 h-8 text-primary transition-colors duration-300 group-hover/card:text-primary" />
                         </div>
                         <h3 className="text-xl font-semibold text-card-foreground font-terminal">
                           [{project.title.split(' ')[0].toUpperCase()}]::{project.title.split(' ').slice(1).join('_').toUpperCase()}

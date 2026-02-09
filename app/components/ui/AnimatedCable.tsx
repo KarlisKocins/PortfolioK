@@ -1,5 +1,4 @@
 "use client";
-import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -8,28 +7,12 @@ const cablePath =
 
 export const AnimatedCable = ({
   className = "",
-  color,
+  color = "#00ff41",
 }: {
   className?: string;
   color?: string;
 }) => {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Use provided color or theme-aware color
-  const strokeColor = color
-    ? color
-    : !mounted
-    ? "currentColor"
-    : theme === "dark"
-    ? "#38bdf8" // Tailwind sky-400 (light blue)
-    : "#0ea5e9"; // Tailwind sky-600 (darker blue)
-
-  return mounted ? (
+  return (
     <motion.svg
       viewBox="0 0 1440 120"
       fill="none"
@@ -41,17 +24,17 @@ export const AnimatedCable = ({
     >
       <motion.path
         d={cablePath}
-        stroke={strokeColor}
+        stroke={color}
         strokeWidth="6"
         strokeLinecap="round"
         initial={{ strokeDasharray: 2000, strokeDashoffset: 2000 }}
         animate={{ strokeDashoffset: 0 }}
         transition={{ duration: 2, ease: "easeInOut" }}
       />
-      {/* Optionally, add glowing effect */}
+      {/* Glowing effect */}
       <motion.path
         d={cablePath}
-        stroke={strokeColor}
+        stroke={color}
         strokeWidth="12"
         strokeLinecap="round"
         style={{ filter: "blur(6px)", opacity: 0.3 }}
@@ -60,7 +43,7 @@ export const AnimatedCable = ({
         transition={{ duration: 2, ease: "easeInOut" }}
       />
     </motion.svg>
-  ) : null;
+  );
 };
 
-export default AnimatedCable; 
+export default AnimatedCable;

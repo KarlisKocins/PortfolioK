@@ -7,9 +7,9 @@ import AnimatedCable from './ui/AnimatedCable'
 import { useInView } from 'react-intersection-observer'
 
 const projects = [
-  { 
-    id: 1, 
-    title: 'AutoWeb', 
+  {
+    id: 1,
+    title: 'AutoWeb',
     icon: Shield,
     description: 'A modern auto repair shop management system with an informative homepage, booking system, and admin dashboard. Features calendar scheduling, user authentication, service management, and responsive design to streamline workshop operations and enhance customer experience.',
     repoUrl: 'https://github.com/KarlisKocins/AutoWeb',
@@ -22,9 +22,9 @@ const projects = [
       'Responsive design'
     ]
   },
-  { 
-    id: 2, 
-    title: 'GymFlow', 
+  {
+    id: 2,
+    title: 'GymFlow',
     icon: Lock,
     description: 'A modern workout tracking web app that lets users create, log, and analyze custom workouts and routines. Features a comprehensive exercise library, pre-made routines, progress analytics, and visualizations to help users track their fitness journey and achieve their goals.',
     techStack: ['Next.js', 'Prisma', 'TailwindCSS', 'TypeScript'],
@@ -37,9 +37,9 @@ const projects = [
       'User accounts'
     ],
   },
-  { 
-    id: 3, 
-    title: 'Merger Helper', 
+  {
+    id: 3,
+    title: 'Merger Helper',
     icon: Terminal,
     description: 'Decision support tool for evaluating and selecting optimal system integration strategies using multi-criteria analysis.',
     techStack: ['Python', 'Excel'],
@@ -83,7 +83,7 @@ const Projects = () => {
                 className="flex justify-center"
               >
                 <CardContainer containerClassName="py-0">
-                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-background w-[380px] min-h-[600px] h-auto rounded-xl p-6 flex flex-col justify-between border border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-background w-full max-w-[380px] h-auto rounded-xl p-6 flex flex-col justify-between border border-primary/20 hover:border-primary/40 transition-colors">
                     <CardItem
                       translateZ="50"
                       className="text-xl font-bold text-neutral-600 dark:text-white w-full mb-4"
@@ -97,7 +97,7 @@ const Projects = () => {
                         </h3>
                       </div>
                     </CardItem>
-                    
+
                     <CardItem
                       as="p"
                       translateZ="60"
@@ -105,7 +105,7 @@ const Projects = () => {
                     >
                       {project.description}
                     </CardItem>
-                    
+
                     <CardItem
                       translateZ="60"
                       className="mt-4"
@@ -119,7 +119,7 @@ const Projects = () => {
                         ))}
                       </ul>
                     </CardItem>
-                    
+
                     <CardItem translateZ="100" className="w-full mt-4 space-y-4">
                       <div className="text-xs text-muted-foreground flex flex-wrap gap-2 justify-center font-terminal">
                         {project.techStack?.map((tech, index) => (
@@ -129,20 +129,19 @@ const Projects = () => {
                         ))}
                       </div>
                       {project.repoUrl ? (
-                        <a 
-                          href={project.repoUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="rounded-xl block w-full bg-primary hover:bg-primary/80 text-primary-foreground text-sm px-4 py-2 text-center relative overflow-hidden transition-colors duration-300 font-terminal hover:animate-glitch"
                         >
                           <span className="relative">$ git clone &lt;repo&gt;</span>
                         </a>
                       ) : (
-                        <div className={`rounded-xl block w-full bg-destructive dark:bg-destructive dark:text-destructive-foreground text-destructive-foreground text-sm px-4 py-2 text-center relative transition-colors duration-300 font-terminal ${
-                          project.title === 'GymFlow' 
-                            ? 'access-denied' 
+                        <div className={`rounded-xl block w-full bg-destructive dark:bg-destructive dark:text-destructive-foreground text-destructive-foreground text-sm px-4 py-2 text-center relative transition-colors duration-300 font-terminal ${project.title === 'GymFlow'
+                            ? 'access-denied'
                             : 'compiling'
-                        }`}>
+                          }`}>
                           <span className="relative">{project.title === 'GymFlow' ? '[ACCESS_DENIED]' : '[COMPILING...]'}</span>
                         </div>
                       )}

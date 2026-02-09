@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 2%;
@@ -37,50 +41,22 @@
     --transition-duration: 0.15s;
     --transition-timing: ease-out;
   }
-
-  .dark {
-    --background: 0 0% 2%;
-    --foreground: 120 100% 50%;
-
-    --muted: 0 0% 8%;
-    --muted-foreground: 120 50% 40%;
-
-    --popover: 0 0% 2%;
-    --popover-foreground: 120 100% 50%;
-
-    --card: 0 0% 4%;
-    --card-foreground: 120 100% 50%;
-
-    --border: 120 30% 20%;
-    --input: 120 30% 20%;
-
-    --primary: 120 100% 50%;
-    --primary-foreground: 0 0% 2%;
-
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 120 100% 50%;
-
-    --accent: 0 0% 8%;
-    --accent-foreground: 120 100% 50%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 2%;
-
-    --ring: 120 100% 50%;
-  }
 }
- 
+
+
+
 @layer base {
   * {
     @apply border-border;
     transition: background-color var(--transition-duration) var(--transition-timing),
-                border-color var(--transition-duration) var(--transition-timing),
-                color var(--transition-duration) var(--transition-timing),
-                fill var(--transition-duration) var(--transition-timing),
-                stroke var(--transition-duration) var(--transition-timing),
-                opacity var(--transition-duration) var(--transition-timing),
-                box-shadow var(--transition-duration) var(--transition-timing);
+      border-color var(--transition-duration) var(--transition-timing),
+      color var(--transition-duration) var(--transition-timing),
+      fill var(--transition-duration) var(--transition-timing),
+      stroke var(--transition-duration) var(--transition-timing),
+      opacity var(--transition-duration) var(--transition-timing),
+      box-shadow var(--transition-duration) var(--transition-timing);
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -89,11 +65,12 @@
 /* Add transition for all color properties except during theme transition */
 *:not(.theme-transition-active *) {
   transition: background-color var(--transition-duration) var(--transition-timing),
-              color var(--transition-duration) var(--transition-timing);
+    color var(--transition-duration) var(--transition-timing);
 }
 
 /* Cybersecurity Theme Effects */
 @layer utilities {
+
   /* Terminal cursor blink */
   .terminal-cursor::after {
     content: '_';
@@ -102,8 +79,16 @@
   }
 
   @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+      opacity: 1;
+    }
+
+    51%,
+    100% {
+      opacity: 0;
+    }
   }
 
   /* Glitch effect */
@@ -135,27 +120,75 @@
   }
 
   @keyframes glitch {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+
+    0%,
+    100% {
+      transform: translate(0);
+    }
+
+    20% {
+      transform: translate(-2px, 2px);
+    }
+
+    40% {
+      transform: translate(-2px, -2px);
+    }
+
+    60% {
+      transform: translate(2px, 2px);
+    }
+
+    80% {
+      transform: translate(2px, -2px);
+    }
   }
 
   @keyframes glitch-1 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(2px, -2px); }
-    40% { transform: translate(-2px, 2px); }
-    60% { transform: translate(-2px, -2px); }
-    80% { transform: translate(2px, 2px); }
+
+    0%,
+    100% {
+      transform: translate(0);
+    }
+
+    20% {
+      transform: translate(2px, -2px);
+    }
+
+    40% {
+      transform: translate(-2px, 2px);
+    }
+
+    60% {
+      transform: translate(-2px, -2px);
+    }
+
+    80% {
+      transform: translate(2px, 2px);
+    }
   }
 
   @keyframes glitch-2 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, -2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(-2px, 2px); }
+
+    0%,
+    100% {
+      transform: translate(0);
+    }
+
+    20% {
+      transform: translate(-2px, -2px);
+    }
+
+    40% {
+      transform: translate(2px, -2px);
+    }
+
+    60% {
+      transform: translate(2px, 2px);
+    }
+
+    80% {
+      transform: translate(-2px, 2px);
+    }
   }
 
   /* Scanlines effect */
@@ -170,13 +203,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 65, 0.03) 2px,
-      rgba(0, 255, 65, 0.03) 4px
-    );
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 65, 0.03) 2px,
+        rgba(0, 255, 65, 0.03) 4px);
     pointer-events: none;
     z-index: 1;
   }
@@ -190,13 +221,25 @@
   }
 
   @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from {
+      width: 0;
+    }
+
+    to {
+      width: 100%;
+    }
   }
 
   @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: hsl(var(--primary)); }
+
+    from,
+    to {
+      border-color: transparent;
+    }
+
+    50% {
+      border-color: hsl(var(--primary));
+    }
   }
 
   /* Matrix rain effect */
@@ -268,8 +311,14 @@
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
   }
 }
-

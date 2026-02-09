@@ -24,25 +24,28 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex space-x-4"
           >
-            <a 
-              href="https://github.com/KarlisKocins" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://github.com/KarlisKocins"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-primary transition duration-300 hover:animate-glitch"
+              aria-label="GitHub profile"
             >
               <Github size={24} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/karlis-kocins-888bb4336/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/in/karlis-kocins-888bb4336/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-primary transition duration-300 hover:animate-glitch"
+              aria-label="LinkedIn profile"
             >
               <Linkedin size={24} />
             </a>
-            <a 
-              href="mailto:kocins36@gmail.com" 
+            <a
+              href="mailto:kocins36@gmail.com"
               className="hover:text-primary transition duration-300 hover:animate-glitch"
+              aria-label="Send email"
             >
               <Mail size={24} />
             </a>
@@ -50,7 +53,7 @@ const Footer = () => {
         </div>
         <div className="mt-4 pt-4 border-t border-primary/20">
           <p className="text-center text-sm text-muted-foreground font-terminal">
-            {/* END_TRANSMISSION // STAY_SECURE // */}
+            END_TRANSMISSION // STAY_SECURE //
           </p>
         </div>
       </div>
