@@ -1,92 +1,107 @@
-'use client'
+import Reveal from './ui/reveal'
 
-import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
-import { BackgroundLines } from './ui/background-lines'
-import { Spotlight } from './ui/Spotlight'
-import GlitchText from './ui/glitch-text'
-import Scanlines from './ui/scanlines'
-
-const Hero = () => {
-  const now = new Date()
-  const buildVersion = `v${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}`
-
-  return (
-    <BackgroundLines className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
-      <Scanlines intensity="low" />
-
-      {/* Hero corner overlays */}
-      <div>
-        <span className="absolute top-20 left-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
-          [USER]::kocins.karlis
-        </span>
-        <span className="absolute top-20 right-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
-          [LOCATION]::LV-RIX
-        </span>
-        <span className="absolute bottom-4 left-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
-          [CONTACT]::kocins36@gmail.com
-        </span>
-        <span className="absolute bottom-4 right-4 text-xs md:text-sm text-muted-foreground z-20 font-terminal transition-colors transition-shadow duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.7)]">
-          [BUILD]::{buildVersion}
-        </span>
-      </div>
-      <Spotlight className="top-[-20%] left-0 md:left-60 md:-top-20" />
-
-      {/* Content */}
-      <div className="text-center relative z-10 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-4"
+const statusRows = [
+  {
+    label: 'Currently building',
+    value: (
+      <>
+        <a
+          href="https://github.com/KarlisKocins/AutoWeb"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-b border-accent/40 transition-colors hover:text-accent"
         >
-          <GlitchText
-            className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-primary mb-2 font-terminal"
-            delay={500}
-          >
-            # SYSTEM.INIT // ACCESS_GRANTED
-          </GlitchText>
-        </motion.div>
+          AutoWeb
+        </a>{' '}
+        — booking system for car workshops
+      </>
+    ),
+  },
+  { label: 'Core stack', value: 'Next.js · TypeScript · Node.js · PostgreSQL' },
+  { label: 'Hardware side', value: 'Home Assistant · Zigbee · VLANs · Docker' },
+  { label: 'Certified', value: 'CompTIA Network+' },
+  { label: 'Education', value: 'BSc Datorsistēmas, Riga Technical University' },
+]
 
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[clamp(1rem,2vw,1.5rem)] text-foreground mb-8 font-terminal"
-        >
-          root@karlis-portfolio:~$ Penetration Testing | Full-Stack Development | Network Security
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <a
-            href="#about"
-            className="bg-primary text-primary-foreground px-[clamp(1rem,3vw,1.5rem)] py-[clamp(0.5rem,1.5vw,0.75rem)] rounded-full font-semibold hover:opacity-90 transition duration-300 text-[clamp(0.875rem,1.5vw,1rem)] font-terminal hover:animate-glitch"
-          >
-            $ ./initialize_profile.sh
-          </a>
-        </motion.div>
+const Hero = () => (
+  <section
+    id="top"
+    className="mx-auto grid max-w-shell scroll-mt-20 grid-cols-1 items-start gap-14 px-6 pb-16 pt-20 md:px-8 lg:grid-cols-[1.35fr_0.95fr] lg:gap-[72px] lg:pb-[88px] lg:pt-[104px]"
+  >
+    <Reveal>
+      <div className="mb-7 flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.12em] text-muted">
+        <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" />
+        Mārupe, Latvia · UTC+3
       </div>
 
-      <motion.div
-        className="absolute bottom-10"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          repeatType: 'reverse',
-        }}
-      >
-        <ArrowDown className="text-primary w-[clamp(1.5rem,4vw,2rem)] h-[clamp(1.5rem,4vw,2rem)]" />
-      </motion.div>
-    </BackgroundLines>
-  )
-}
+      <h1 className="mb-7 text-pretty text-[2.25rem] font-semibold leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[60px]">
+        I build web apps end to end — and the parts that touch real hardware.
+      </h1>
+
+      <p className="mb-10 max-w-[56ch] text-pretty text-[17px] leading-[1.6] text-muted lg:text-[19px]">
+        Kārlis Kociņš, full-stack developer. Next.js, TypeScript and PostgreSQL on the software
+        side; Home Assistant, Zigbee devices and managed switches on the other. I like projects
+        where the two meet.
+      </p>
+
+      <div className="flex flex-wrap gap-3">
+        <a
+          href="#work"
+          className="rounded-[9px] bg-accent px-[22px] py-3 text-[15px] font-medium text-background transition-colors hover:bg-accent-hover"
+        >
+          See selected work
+        </a>
+        <a
+          href="https://github.com/KarlisKocins"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2.5 rounded-[9px] border border-white/[0.14] px-[22px] py-3 text-[15px] font-medium transition-colors hover:border-white/[0.35]"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.4.5-.7 1.1-.8 1.7-.1.6-.1 1.3 0 1.9v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </Reveal>
+
+    <Reveal delay={0.1} className="lg:mt-2">
+      <div className="overflow-hidden rounded-[14px] border bg-surface">
+        <div className="flex justify-between border-b px-[18px] py-3.5 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+          <span>Status</span>
+          <span className="text-accent">Available</span>
+        </div>
+        <dl className="px-[18px] pb-[18px] pt-1.5">
+          {statusRows.map((row, index) => (
+            <div
+              key={row.label}
+              className={
+                index === statusRows.length - 1
+                  ? 'pb-1 pt-3.5'
+                  : 'border-b border-white/[0.06] py-3.5'
+              }
+            >
+              <dt className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
+                {row.label}
+              </dt>
+              <dd className="text-[15px]">{row.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Reveal>
+  </section>
+)
 
 export default Hero
-

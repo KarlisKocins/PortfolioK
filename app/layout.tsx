@@ -1,26 +1,30 @@
 import './globals.css'
-import { Inter, Press_Start_2P, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
+import { JetBrains_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
-const pressStart = Press_Start_2P({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-press-start'
+const geistSans = localFont({
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
+  display: 'swap',
 })
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrains-mono'
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Karlis Kocins | Full-Stack Developer & Home Automation',
-  description: 'Portfolio of Karlis Kocins — Full-Stack Developer specializing in Next.js, React, TypeScript, and smart home automation. Based in Riga, Latvia.',
-  keywords: ['Karlis Kocins', 'Full-Stack Developer', 'Next.js', 'React', 'TypeScript', 'Home Automation', 'Portfolio', 'Riga', 'Latvia'],
-  authors: [{ name: 'Karlis Kocins' }],
+  title: 'Kārlis Kociņš | Full-Stack Developer',
+  description: 'Kārlis Kociņš — full-stack developer, Mārupe, Latvia. Next.js, TypeScript and PostgreSQL on the software side; Home Assistant, Zigbee and managed switches on the other.',
+  keywords: ['Kārlis Kociņš', 'Full-Stack Developer', 'Next.js', 'TypeScript', 'PostgreSQL', 'Home Assistant', 'Homelab', 'Networking', 'Portfolio', 'Mārupe', 'Latvia'],
+  authors: [{ name: 'Kārlis Kociņš' }],
   openGraph: {
-    title: 'Karlis Kocins | Full-Stack Developer & Home Automation',
-    description: 'Portfolio of Karlis Kocins — Full-Stack Developer specializing in Next.js, React, TypeScript, and smart home automation.',
+    title: 'Kārlis Kociņš | Full-Stack Developer',
+    description: 'Full-stack developer in Mārupe, Latvia. Web apps end to end — and the parts that touch real hardware.',
     type: 'website',
     locale: 'en_US',
   },
@@ -36,7 +40,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} ${pressStart.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        {/* Scroll reveals start hidden and are animated in by JS — show them outright without it. */}
+        <noscript>
+          <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
+      </head>
+      <body className={`${geistSans.variable} ${jetbrainsMono.variable} font-sans`}>
         {children}
       </body>
     </html>

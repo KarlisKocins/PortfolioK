@@ -6,121 +6,53 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        background: "#0B0E11",
+        foreground: "#E7EDF3",
+        muted: "#8B98A5",
+        surface: {
+          DEFAULT: "#101519",
+          hover: "#12181D",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#39D353",
+          hover: "#4ADE6A",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      borderColor: {
+        DEFAULT: "rgba(255,255,255,0.09)",
+      },
+      fontFamily: {
+        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
+      },
+      maxWidth: {
+        shell: "1180px",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
-        spotlight: {
-          "0%": {
-            opacity: 0,
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: 1,
-            transform: "translate(-50%,-40%) scale(1)",
-          },
-        },
-        glitch: {
-          "0%, 100%": { transform: "translate(0)" },
-          "20%": { transform: "translate(-2px, 2px)" },
-          "40%": { transform: "translate(-2px, -2px)" },
-          "60%": { transform: "translate(2px, 2px)" },
-          "80%": { transform: "translate(2px, -2px)" },
-        },
-        "terminal-blink": {
-          "0%, 50%": { opacity: "1" },
-          "51%, 100%": { opacity: "0" },
-        },
-        "matrix-rain": {
-          "0%": { transform: "translateY(-100vh)" },
-          "100%": { transform: "translateY(100vh)" },
-        },
-        "scanline": {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100vh)" },
-        },
-        "typing": {
-          "from": { width: "0" },
-          "to": { width: "100%" },
-        },
-        "flicker": {
+        "pulse-dot": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.8" },
+          "50%": { opacity: "0.35" },
+        },
+        "drift-l": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "drift-r": {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-        glitch: "glitch 2s infinite",
-        "terminal-blink": "terminal-blink 1s infinite",
-        "matrix-rain": "matrix-rain 3s linear infinite",
-        "scanline": "scanline 2s linear infinite",
-        "typing": "typing 3.5s steps(40, end)",
-        "flicker": "flicker 0.1s infinite",
-      },
-      fontFamily: {
-        pressStart: ['var(--font-press-start)'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'monospace'],
-        terminal: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+        "pulse-dot": "pulse-dot 2.4s ease-in-out infinite",
+        "drift-l": "drift-l 48s linear infinite",
+        "drift-r": "drift-r 62s linear infinite",
+        "drift-l-slow": "drift-l 74s linear infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
 }
-
